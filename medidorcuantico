@@ -1,0 +1,14 @@
+from qiskit import QuantumCircuit, execute, Aer
+
+# Creamos el circuito cuántico con un solo qubit
+qc = QuantumCircuit(1,1)
+
+# Hacemos una medición en la base Z
+qc.measure(0,0)
+
+# Ejecutamos el circuito en el simulador qasm
+backend = Aer.get_backend('qasm_simulator')
+result = execute(qc, backend).result()
+
+# Imprimimos el resultado de la medición
+print(result.get_counts(qc))
